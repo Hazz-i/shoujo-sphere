@@ -21,7 +21,7 @@ const AnimeCardTier: React.FC<AnimeCardTierProps> = ({ animeTier }) => {
 							'noopener noreferrer'
 						);
 					}}
-					className='flex gap-4 group'
+					className='flex gap-4 group items-center'
 					key={index}
 				>
 					<div className='flex items-center justify-center'>{list.ranking}</div>

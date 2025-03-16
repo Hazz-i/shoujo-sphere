@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { Card } from './ui/card';
 import { ANIME_CARD } from '@/types/ANIME_TYPES';
 import React from 'react';

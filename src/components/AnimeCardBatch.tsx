@@ -1,4 +1,4 @@
-import ANIME_CARD from '../types/ANIME_TYPES';
+import { ANIME_CARD } from '../types/ANIME_TYPES';
 import { NavLink } from 'react-router-dom';
 import { Card } from './ui/card';
 

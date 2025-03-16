@@ -40,7 +40,6 @@ export const ContextProvider = ({ children } : any) => {
 				setOngoingAll(ongoingAllResponse.data.data);
 				const batchAllResponse = await axiosClient.get(`/batch-all`);
 				setBatchAll(batchAllResponse.data.data);
-				// const [ongoingAllResponse, batchAllResponse] = await Promise.all([axiosClient.get("/ongoing-all"), axiosClient.get("/batch-all")]);
 			} catch (error) {
 				console.error('Error fetching:', error);
 			}
