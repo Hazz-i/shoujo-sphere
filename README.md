@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# 🎥 **SHOUJO SPHERE**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Yo! Selamat datang di repo **SHOUJO SPHERE** yang berisi _portingan_ dari salah satu website anime. Repo ini dibagun dan diperuntukan sebagai referensi bagi para penyuka anime yang ingin mencoba untuk membuat atau mengembangkan web anime-nya sendiri. Karena repo ini merupakan web portingan, data yang digunakan sudah tentu merupakan bukan data pribadi atau data tidak _official_ yang di dapat dari hasil scarpping dari salah satu web anime [OtakuDesu](https://otakudesu.cloud/).
 
-Currently, two official plugins are available:
+## 🛠️ **Requirements**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Repo ini dibangun dengan menggunakan **React 18.3.1** dan menggunakan server **Flask**, jadi berikut merupakan requirements yang harus dipenuhi untuk bisa menjalankan program secara optimal:
 
-## Expanding the ESLint configuration
+- Node 22.14.0
+- Python 3.12
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ⚙️ **Configurations**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Native
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clone Repo
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+   ```bash
+   git clone https://github.com/Hazz-i/shoujo-sphere.git
+   ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+2. Masuk Directory
+   ```bash
+   cd shoujo-sphere
+   ```
+
+3. Install Depedency
+   ```bash
+   npm install
+   ```
+
+4. Run FE
+   ```bash
+   npm run dev
+   ```
+
+5. Tambahkan terminal dan masuk ke directory server
+   ```bash
+   cd server
+   ```
+
+6. Buat virtual environment
+   ```bash
+   python -m venv [nama environment]
+   ```
+
+7. Jalankan virtual environment
+   ```bash
+   source ./[nama environment]/scripts/activate # mac / git bash
+   .\[nama environment]\scripts\activate # powershell
+   ```
+
+8. Install Depedency
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+9. Run BE
+   ```bash
+   python server.py
+   ``` 
+### Docker
+
+TODO
+
+
+## 🪛 **Troubleshoot**
+* Pastikan env sudah di setup pada FE dan BE
+* Jikalau scrapping gagal mungkin web yang di tuju sudah experied
+* Pastikan server berjalan untuk dapat meload content
+* Sesuaikan requirements
+
+## ➖ **Disadvantages of this repo**
+* Kualitas content masih di 360p
+* Content tidak dinamis (hanya terdapat tampilan desktop)
+
+## 🗒️ **More**
+* Contact jika mau collab
+* Jangan lupa kasi star hehehe😁
