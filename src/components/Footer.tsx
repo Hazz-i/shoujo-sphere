@@ -1,7 +1,7 @@
 const Footer = () => {
 	return (
-		<footer className="w-full bg-gray-900 position-fixed bottom-0 text-white py-10 flex items-center justify-center">
-			<p>Footer</p>
+		<footer className='footer border-t-2 border-t-gray-800 flex items-center justify-center py-3 w-full'>
+			<small>&copy; 2025 by Admin Ganteng</small>
 		</footer>
 	);
 };

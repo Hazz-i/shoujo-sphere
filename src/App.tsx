@@ -1,30 +1,20 @@
-import { Routes, Route } from 'react-router-dom';
-import MoviePage from './pages/MoviePage';
-import HomePage from './pages/HomePage';
-import OngoingAllPage from './pages/OngoingAllPage';
-import BatchAllPage from './pages/BatchAllPage';
-import RecentPage from './pages/RecentPage';
-import GenrePage from './pages/GenrePage';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { ThemeProvider } from './components/ThemeProvider';
+import { ContextProvider } from './contexts/ContextProviders';
+import { Outlet } from 'react-router-dom';
 
 function App() {
 	return (
-		<div className='min-h-screen bg-gray-950 text-white w-full flex flex-col items-center gap-10'>
-			<Header />
-			<Routes>
-				<Route path='/' element={<HomePage />} />
-				<Route path='/genre-list' element={<GenrePage />} />
-				<Route path='/recents' element={<RecentPage />} />
-
-				<Route path='/ongoing-all' element={<OngoingAllPage />} />
-				<Route path='/batch-all' element={<BatchAllPage />} />
-
-				<Route path='/:animeTitle' element={<MoviePage />} />
-			</Routes>
-
-			<Footer />
-		</div>
+		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
+			<div className='min-h-screen bg-gray-950 text-gray-300 w-full flex flex-col items-center gap-10'>
+				<Header />
+				<ContextProvider>
+					<Outlet />
+				</ContextProvider>
+				<Footer />
+			</div>
+		</ThemeProvider>
 	);
 }
 

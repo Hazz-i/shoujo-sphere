@@ -1,10 +1,13 @@
+import { useParams } from "react-router-dom";
+
 const MoviePage = () => {
+	const { title, episode } = useParams();
+	console.log(title, episode);
+
 	return (
-		<>
-			<div className='flex flex-col items-center justify-center w-full'>
-				<h1 className='text-2xl font-bold'>MoviePage</h1>
-			</div>
-		</>
+		<section className="w-3/4 mx-auto">
+				<h1 className='text-2xl font-bold'>{title}</h1>
+		</section>
 	);
 };
 

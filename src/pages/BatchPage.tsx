@@ -1,4 +1,4 @@
-const BatchAllPage = () => {
+const BatchPage = () => {
     return (
         <div>
             <h1>Batch All Page</h1>
@@ -7,4 +7,4 @@ const BatchAllPage = () => {
 
 }
 
-export default BatchAllPage;
+export default BatchPage;

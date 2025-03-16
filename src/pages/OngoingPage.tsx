@@ -1,4 +1,4 @@
-const OngoingAllPage = () => {
+const OngoingPage = () => {
     return (
         <div>
             <h1>Ongoing All Page</h1>
@@ -7,4 +7,4 @@ const OngoingAllPage = () => {
 
 }
 
-export default OngoingAllPage;
+export default OngoingPage;

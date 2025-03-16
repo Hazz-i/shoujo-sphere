@@ -1,7 +1,7 @@
-import { useNavigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Card } from './ui/card';
-import ANIME_CARD from '@/types/ANIME_CARD';
+import { ANIME_CARD } from '@/types/ANIME_TYPES';
 import React from 'react';
 import { PlayIcon, CalendarIcon, CalendarDateRangeIcon } from '@heroicons/react/24/solid';
 
@@ -10,20 +10,18 @@ interface AnimeCardProps {
 }
 
 const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
-	const navigate = useNavigate();
-
 	return (
 		<NavLink
-			to={`/detail/${anime.anime_url}/${anime.episode}`}
+			to={`/detail/${anime.title}/${anime.episode}`}
 			onClick={(e) => {
 				e.preventDefault();
 				window.open(
-					`/detail/${anime.anime_url}/${anime.episode}`,
+					`/detail/${anime.title}/${anime.episode}`,
 					'_blank',
 					'noopener noreferrer'
 				);
 			}}
-			className={'flex gap-5 items-center justify-start text-gray-300 relative group'}
+			className={'flex gap-5 items-center justify-start relative group'}
 		>
 			<Card
 				className='w-[125px] h-[170px] lg:w-[145px] lg:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-105 bg-cover bg-center'
@@ -37,7 +35,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
 			</Card>
 
 			<span className='flex flex-col justify-between h-3/4'>
-				<h3 className='font-semibold text-wrap'>{anime.title}</h3>
+				<h3 className='font-semibold text-wrap text-xl'>{anime.title}</h3>
 
 				<span className='grid gap-1'>
 					<small className='flex gap-1 items-center'>

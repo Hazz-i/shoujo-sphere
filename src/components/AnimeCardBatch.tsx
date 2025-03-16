@@ -1,4 +1,4 @@
-import ANIME_CARD from '../types/ANIME_CARD';
+import ANIME_CARD from '../types/ANIME_TYPES';
 import { NavLink } from 'react-router-dom';
 import { Card } from './ui/card';
 
@@ -27,8 +27,8 @@ const AnimeCardBatch: React.FC<AnimeCardBatchProps> = ({ anime }) => {
 					}}
 				>
 					<div className='absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-100 flex flex-col justify-end p-3'>
-						<h1 className='font-semibold text-white text-sm mb-2'>{anime.title}</h1>
-						<ul className='text-white text-xs space-y-1'>
+						<h1 className='font-semibold text-sm mb-2'>{anime.title}</h1>
+						<ul className='text-xs space-y-1'>
 							<li className='flex items-center'>
 								<i className='bx bx-play mr-1'></i>
 								<span>episode: {anime.episode}</span>

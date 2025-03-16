@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { ModeToggle } from './ModeToggle';
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -7,7 +8,7 @@ const Header = () => {
 			<h1 className='font-bold text-3xl'>Shoujo Sphere</h1>
 
 			<nav>
-				<ul className='flex space-x-4 font-semibold'>
+				<ul className='flex space-x-4 font-semibold items-center'>
 					<li>
 						<a className='hover:underline' onClick={() => navigate(`/`)}>
 							Home
@@ -22,6 +23,9 @@ const Header = () => {
 						<a className='hover:underline' onClick={() => navigate(`/recents`)}>
 							Recently
 						</a>
+					</li>
+					<li>
+						<ModeToggle />
 					</li>
 				</ul>
 			</nav>
