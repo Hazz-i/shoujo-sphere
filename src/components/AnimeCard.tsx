@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import { Card } from './ui/card';
-import { ANIME_CARD } from '@/types/ANIME_TYPES';
+import { ANIME_DATA } from '@/types/ANIME_TYPES';
 import React from 'react';
 import { PlayIcon, CalendarIcon, CalendarDateRangeIcon } from '@heroicons/react/24/solid';
 
 interface AnimeCardProps {
-	anime: ANIME_CARD;
+	anime: ANIME_DATA;
 }
 
 const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {

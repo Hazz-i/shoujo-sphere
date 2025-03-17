@@ -1,20 +1,20 @@
-import { ANIME_CARD } from '../types/ANIME_TYPES';
+import { ANIME_DATA } from '../types/ANIME_TYPES';
 import { NavLink } from 'react-router-dom';
 import { Card } from './ui/card';
 
 interface AnimeCardBatchProps {
-	anime: ANIME_CARD;
+	anime: ANIME_DATA;
 }
 
 const AnimeCardBatch: React.FC<AnimeCardBatchProps> = ({ anime }) => {
 	return (
 		<div className='relative group'>
 			<NavLink
-				to={`/neko-stream/detail/${anime.anime_url}/${anime.episode}`}
+				to={`/detail/${anime.title}/${anime.episode}`}
 				onClick={(e) => {
 					e.preventDefault();
 					window.open(
-						`/neko-stream/detail/${anime.anime_url}/${anime.episode}`,
+						`/detail/${anime.title}/${anime.episode}`,
 						'_blank',
 						'noopener noreferrer'
 					);

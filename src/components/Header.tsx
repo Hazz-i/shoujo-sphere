@@ -1,21 +1,17 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import { ModeToggle } from './ModeToggle';
+import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
-import { useSearch } from '@/contexts/SearchProviders';
-import { MagnifyingGlassCircleIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 
 
 const Header = () => {
-	const navigate = useNavigate();
 	const [isScrolled, setIsScrolled] = React.useState<boolean>(false);
 
 	// const { setSearch, isSearch, setIsSearch } = useSearch();
 	const [searchAnime, setSearchAnime] = React.useState<string>("");
 	const [isSearching, setIsSearching] = React.useState<boolean>(false);
 
-	const [isClicked, setIsClicked] = React.useState(false);
 	const [searchClick, setSearchClick] = React.useState(false);
 
 	React.useEffect(() => {
@@ -90,9 +86,11 @@ const Header = () => {
 							</Button>
 						</form>
 					</li>
-					<li>
+
+					{/* TODO */}
+					{/* <li>
 						<ModeToggle />
-					</li>
+					</li> */}
 				</ul>
 			</nav>
 		</header>

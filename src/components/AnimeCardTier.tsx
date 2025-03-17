@@ -1,16 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card } from './ui/card';
-import { ANIME_TIER } from '@/types/ANIME_TYPES';
+import { ANIME_TIERS } from '@/types/ANIME_TYPES';
 
 interface AnimeCardTierProps {
-    animeTier: ANIME_TIER[];
+    animeTier: ANIME_TIERS[];
 }
 
 const AnimeCardTier: React.FC<AnimeCardTierProps> = ({ animeTier }) => {
 	return (
 		<>
-			{animeTier.map((list, index) => (
+			{animeTier.slice(0,10).map((list, index) => (
 				<NavLink
 					to={'https://myanimelist.net/topanime.php?type=bypopularity'}
 					onClick={(e) => {
