@@ -4,13 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 
-import { Moon, Sun } from 'lucide-react';
-import { useTheme } from './ThemeProvider';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 
 const Header = () => {
-	const { setTheme, theme } = useTheme();
-
 	const [isScrolled, setIsScrolled] = React.useState<boolean>(false);
 
 	// const { setSearch, isSearch, setIsSearch } = useSearch();
@@ -47,14 +43,6 @@ const Header = () => {
 
 		setSearchAnime('');
 		setSearchClick(false);
-	};
-
-	const handleToggleTheme = () => {
-		if (theme === 'dark') {
-			setTheme('light');
-		} else {
-			setTheme('dark');
-		}
 	};
 
 	return (
@@ -100,13 +88,6 @@ const Header = () => {
 						</form>
 					</li>
 
-					{/* <li>
-						<Button onClick={handleToggleTheme} variant='ghost' className='w-full justify-start'>
-							<Sun className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
-							<Moon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />{' '}
-							Theme
-						</Button>
-					</li> */}
 				</ul>
 			</nav>
 		</header>

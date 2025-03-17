@@ -15,18 +15,11 @@ services:
     env_file:
       - ./.env
 
-
   flask:
     build: ./server
     ports:
       - "5000:5000"
     volumes:
       - ./server:/app
-    environment:
-      - FLASK_ENV=${FLASK_ENV}
-      - FLASK_APP=${FLASK_APP}
-      - FLASK_RUN_HOST=${FLASK_RUN_HOST}
-      - FLASK_RUN_PORT=${FLASK_RUN_PORT}
-      - FLASK_CORS_ORIGINS=${FLASK_CORS_ORIGINS}
     env_file:
       - ./server/.env

@@ -2,9 +2,12 @@
 
 Yo! Selamat datang di repo **SHOUJO SPHERE** yang berisi _portingan_ dari salah satu website anime. Repo ini dibagun dan diperuntukan sebagai referensi bagi para penyuka anime yang ingin mencoba untuk membuat atau mengembangkan web anime-nya sendiri. Karena repo ini merupakan web portingan, data yang digunakan sudah tentu merupakan bukan data pribadi atau data tidak _official_ yang di dapat dari hasil scarpping dari salah satu web anime [OtakuDesu](https://otakudesu.cloud/).
 
+## 🤖 **AI**
+Pada repo ini terdapat fitur rekomendasi yang dibangun dengan menggunakan metode content base filtering, dengan dataset yang di dapatkan dari web [OtakuDesu](https://otakudesu.cloud/).
+
 ## 🛠️ **Requirements**
 
-Repo ini dibangun dengan menggunakan **React 18.3.1** dan menggunakan server **Flask**, jadi berikut merupakan requirements yang harus dipenuhi untuk bisa menjalankan program secara optimal:
+Repo ini dibangun dengan menggunakan **React 18.3.1** dan menggunakan server **Flask 3.1.0**, jadi berikut merupakan requirements yang harus dipenuhi untuk bisa menjalankan program secara optimal:
 
 - Node 22.14.0
 - Python 3.12
@@ -13,23 +16,23 @@ Repo ini dibangun dengan menggunakan **React 18.3.1** dan menggunakan server **F
 
 ### Native
 
-1. Clone Repo
+1. Clone repo
 
    ```bash
    git clone https://github.com/Hazz-i/shoujo-sphere.git
    ```
 
-2. Masuk Directory
+2. Masuk directory
    ```bash
    cd shoujo-sphere
    ```
 
-3. Install Depedency
+3. Install depedency
    ```bash
    npm install
    ```
 
-4. Run FE
+4. Jalankan script FE
    ```bash
    npm run dev
    ```
@@ -50,19 +53,26 @@ Repo ini dibangun dengan menggunakan **React 18.3.1** dan menggunakan server **F
    .\[nama environment]\scripts\activate # powershell
    ```
 
-8. Install Depedency
+8. Install depedency
    ```bash
    pip install -r requirements.txt
    ```
 
-9. Run BE
+9. Jalankan script BE
    ```bash
    python server.py
    ``` 
 ### Docker
 
-TODO
+1. Build docker images
+   ```bash
+   docker compose build --no-cache
+   ```
 
+2. Jalankan docker container
+   ```bash
+   docker compose up -d
+   ```
 
 ## 🪛 **Troubleshoot**
 * Pastikan env sudah di setup pada FE dan BE
