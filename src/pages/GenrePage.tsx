@@ -12,13 +12,15 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ANIME_GENRE } from '@/types/ANIME_TYPES';
+import { ANIME_GENRE, ANIME_GENRE_LIST } from '@/types/ANIME_TYPES';
+import AnimeCardGenre from '@/components/AnimeCardGenre';
+import AnimeCardGenreSkeleton from '@/components/skeletons/AnimeCardGenreSkeleton';
 
 const GenrePage = () => {
-	const { animeGenres } : any = useStateContext();
+	const { animeGenres }: any = useStateContext();
 
-	const [genres, setGenres] = useState([]);
-	const [listAnimes, setListAnimes] = useState([]);
+	const [genres, setGenres] = useState<ANIME_GENRE[]>([]);
+	const [listAnimes, setListAnimes] = useState<ANIME_GENRE_LIST[]>([]);
 	const [pages, setPages] = useState([]);
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +39,7 @@ const GenrePage = () => {
 	useEffect(() => {
 		const fetchAnimeList = async () => {
 			try {
-				navigate(`/genre/${greneSelected}/${page}`);
+				navigate(`/genres/${greneSelected}/${page}`);
 				setIsListAnimeLoading(true);
 				const response = await axiosClient.get(
 					`/genres/${greneSelected.toLocaleLowerCase()}/${page}`
@@ -45,7 +47,7 @@ const GenrePage = () => {
 				const { genre_data, genre_pages } = response.data.data;
 				setListAnimes(genre_data);
 				setPages(genre_pages);
-			} catch (error : any) {
+			} catch (error: any) {
 				console.log(error.response.status);
 			} finally {
 				setIsListAnimeLoading(false);
@@ -60,19 +62,19 @@ const GenrePage = () => {
 	}, [greneSelected]);
 
 	return (
-		<div>
+		<div className='w-full flex justify-center min-h-[80vh]'>
 			{isLoading ? (
-				<span className='flex items-center justify-center h-[94vh] lg:h-[95vh]'>
-					<div className='relative'>
+				<span className='flex items-center justify-center w-full'>
+					<div className='relative '>
 						<div className='h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-400'></div>
 						<div className='absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-700 animate-spin'></div>
 					</div>
 				</span>
 			) : (
-				<div className=' px-3 lg:px-0 lg:container pt-20 pb-5 flex flex-col gap-3 items-center justify-start'>
+				<div className='w-3/4'>
 					{/* GENRE LIST*/}
-					<div className='w-full flex items-center justify-between gap-3'>
-						<h1 className='font-semibold lg:font-bold lg:text-xl'>Anime Grene List</h1>
+					<div className='w-full flex justify-between items-center'>
+						<h2 className='text-2xl font-bold'>Anime Grene List</h2>
 
 						<DropdownMenu>
 							<DropdownMenuTrigger asChild>
@@ -82,7 +84,7 @@ const GenrePage = () => {
 								<DropdownMenuLabel>Anime Grenes</DropdownMenuLabel>
 								<DropdownMenuSeparator />
 								<DropdownMenuRadioGroup value={greneSelected} onValueChange={setGreneSelected}>
-									{genres.map((genre : any, index : number) => {
+									{genres?.map((genre, index: number) => {
 										return (
 											<DropdownMenuRadioItem value={`${genre.title}`} key={index}>
 												{genre.title}
@@ -96,23 +98,26 @@ const GenrePage = () => {
 					{/* END GENRE LIST*/}
 
 					{/* GENRE*/}
-					{isListAnimeLoading ? (
-						<span className='flex flex-col justify-center items-center bg-gray-900 rounded-lg gap-5 p-5 min-w-full min-h-[74vh] lg:min-h-[80vh]'>
-							<div className='flex flex-row gap-2'>
-								<div className='w-4 h-4 rounded-full bg-gray-700 animate-bounce'></div>
-								<div className='w-4 h-4 rounded-full bg-gray-700 animate-bounce [animation-delay:-.3s]'></div>
-								<div className='w-4 h-4 rounded-full bg-gray-700 animate-bounce [animation-delay:-.5s]'></div>
+					{/* GENRE */}
+					<div className='w-full bg-gray-900 rounded-lg p-5 mt-5'>
+						{isListAnimeLoading ? (
+							<div className='grid grid-cols-1 lg:grid-cols-2 gap-3'>
+								{Array.from({ length: 6 }).map((_, index) => (
+									<AnimeCardGenreSkeleton key={index} />
+								))}
 							</div>
-						</span>
-					) : (
-						// <SubComponent
-						//   animesData={listAnimes}
-						//   subTitle="Genres"
-						//   subTitle1="Studio"
-						//   subTitle2="Info"
-						// />
-						<h1>hai</h1>
-					)}
+						) : listAnimes?.length > 0 ? (
+							<div className='grid grid-cols-1 lg:grid-cols-2 gap-3'>
+								{listAnimes.map((anime, index) => (
+									<AnimeCardGenre key={index} genre={anime} />
+								))}
+							</div>
+						) : (
+							<div className='w-full min-h-[80vh] flex items-center justify-center'>
+								<p className='text-center font-semibold text-lg'>No results found</p>
+							</div>
+						)}
+					</div>
 				</div>
 			)}
 		</div>

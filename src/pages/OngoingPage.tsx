@@ -7,7 +7,6 @@ import { ANIME_DATA } from '@/types/ANIME_TYPES';
 const OngoingPage = () => {
 	const { ongoingAll} : any = useStateContext();
 
-
 	const [ongoingAnimes, setOnGoingAnimes] = useState<ANIME_DATA[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 

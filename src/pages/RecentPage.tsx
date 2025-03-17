@@ -20,7 +20,7 @@ const RecentPage = () => {
 				<section className='w-3/4 min-h-[80vh]'>
 					<h2 className='text-2xl font-bold'>Recently Watched</h2>
 
-					<div className='p-5 rounded-lg mt-5 grid grid-cols-3 gap-5'>
+					<div className='p-5 rounded-lg mt-5 grid grid-cols-3 gap-5 bg-gray-900'>
 						{sortedMovies.map((anime) => (
 							<AnimeCard anime={anime} key={anime.title} />
 						))}

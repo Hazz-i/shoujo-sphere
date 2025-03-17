@@ -43,11 +43,11 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
 				const animeGenresResponse = await axiosClient.get(`/genres`);
 				setAnimeGenres(animeGenresResponse.data.data || []);
 
-				// const ongoingAllResponse = await axiosClient.get(`/ongoing-all`);
-				// setOngoingAll(ongoingAllResponse.data.data || []);
+				const ongoingAllResponse = await axiosClient.get(`/ongoing-all`);
+				setOngoingAll(ongoingAllResponse.data.data || []);
 
-				// const batchAllResponse = await axiosClient.get(`/batch-all`);
-				// setBatchAll(batchAllResponse.data.data || []);
+				const batchAllResponse = await axiosClient.get(`/batch-all`);
+				setBatchAll(batchAllResponse.data.data || []);
 			} catch (error) {
 				console.error('Error fetching:', error);
 			}
