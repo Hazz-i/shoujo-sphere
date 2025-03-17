@@ -21,7 +21,7 @@ const AnimeCardBatch: React.FC<AnimeCardBatchProps> = ({ anime }) => {
 				}}
 			>
 				<Card
-					className='w-[130px] h-[175px] lg:w-[145px] lg:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-105 bg-cover bg-center'
+					className='w-[130px] h-[175px] lg:w-[145px] lg:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-105 bg-cover bg-center relative overflow-hidden'
 					style={{
 						backgroundImage: `url(${anime.image_url})`,
 					}}

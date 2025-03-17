@@ -1,29 +1,55 @@
-import { NavLink } from 'react-router-dom';
+import React from 'react';
 import { Card } from './ui/card';
 import { ANIME_DATA } from '@/types/ANIME_TYPES';
-import React from 'react';
 import { PlayIcon, CalendarIcon, CalendarDateRangeIcon } from '@heroicons/react/24/solid';
+
+import { db } from '@/lib/dexie';
+import { useLiveQuery } from 'dexie-react-hooks';
 
 interface AnimeCardProps {
 	anime: ANIME_DATA;
 }
 
 const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
+	const movies = useLiveQuery(() => db.readAllMovies(), []);
+
+	const handleSelectAnimeMovie = async () => {
+		if (!movies) return; 
+	
+		const existingMovie = movies.find((movie) => movie.title === anime.title);
+	
+		if (existingMovie && existingMovie.id) {
+			await db.updateMovie(existingMovie.id, {
+				episode: anime.episode,
+				date_release: anime.date_release,
+				day_release: anime.day_release,
+				image_alt: anime.image_alt,
+				image_url: anime.image_url,
+				link: anime.link,
+			});
+		} else {
+			await db.createMovie({
+				title: anime.title,
+				episode: anime.episode,
+				date_release: anime.date_release,
+				day_release: anime.day_release,
+				image_alt: anime.image_alt,
+				image_url: anime.image_url,
+				link: anime.link,
+			});
+		}
+	
+		window.open(`/detail/${anime.title}/${anime.episode}`, '_blank', 'noopener noreferrer');
+	};
+	
+
 	return (
-		<NavLink
-			to={`/detail/${anime.title}/${anime.episode}`}
-			onClick={(e) => {
-				e.preventDefault();
-				window.open(
-					`/detail/${anime.title}/${anime.episode}`,
-					'_blank',
-					'noopener noreferrer'
-				);
-			}}
+		<button
+			onClick={handleSelectAnimeMovie}
 			className={'flex gap-5 items-center justify-start relative group'}
 		>
 			<Card
-				className='w-[125px] h-[170px] lg:w-[145px] lg:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-105 bg-cover bg-center'
+				className='w-[125px] h-[170px] lg:w-[145px] lg:h-[200px] transition-all duration-300 ease-in-out group-hover:scale-105 bg-cover bg-center relative overflow-hidden'
 				style={{
 					backgroundImage: `url(${anime.image_url})`,
 				}}
@@ -34,7 +60,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
 			</Card>
 
 			<span className='flex flex-col justify-between h-3/4'>
-				<h3 className='font-semibold text-wrap text-xl'>{anime.title}</h3>
+				<h3 className='font-semibold text-wrap text-start'>{anime.title}</h3>
 
 				<span className='grid gap-1'>
 					<small className='flex gap-1 items-center'>
@@ -51,7 +77,7 @@ const AnimeCard: React.FC<AnimeCardProps> = ({ anime }) => {
 					</small>
 				</span>
 			</span>
-		</NavLink>
+		</button>
 	);
 };
 

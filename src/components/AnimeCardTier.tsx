@@ -31,11 +31,11 @@ const AnimeCardTier: React.FC<AnimeCardTierProps> = ({ animeTier }) => {
 							backgroundImage: `url(${list.image_url})`,
 						}}
 					></Card>
-					<div className='flex flex-col justify-between w-[calc(100%-140px)]'>
+					<div className='flex flex-col justify-between w-3/4]'>
 						<h1 className='text-wrap font-semibold text-sm'>{list.title}</h1>
 						<span className='grid'>
-							<small>
-								{list.data_range}&nbsp;&nbsp; ({list.description})
+							<small className='pb-3'>
+								{list.data_range}&nbsp;&nbsp;
 							</small>
 							<small>Rate: {list.rating} ⭐</small>
 						</span>

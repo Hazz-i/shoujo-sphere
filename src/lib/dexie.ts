@@ -3,10 +3,12 @@ import Dexie, { Table } from 'dexie';
 interface DEX_MOVIE {
 	id: string;
 	title: string;
-	image: string;
-	description: string;
-	episode: number;
-	url: string;
+	episode: string;
+	date_release: string;
+	day_release: string;
+	image_alt: string;
+	image_url: string;
+	link: string;
 	create_at: Date;
 	update_at: Date;
 }
@@ -38,8 +40,16 @@ class MovieDB extends Dexie {
 		return id;
 	}
 
+	// mehthod untuk update film
+	async updateMovie(id: string, movie: Partial<DEX_MOVIE>): Promise<void> {
+		await this.movies.update(id, {
+			...movie,
+			update_at: new Date(),
+		});
+	}
+
 	// Method untuk membaca semua film
-	async readMovies(): Promise<DEX_MOVIE[]> {
+	async readAllMovies(): Promise<DEX_MOVIE[]> {
 		return await this.movies.toArray();
 	}
 }

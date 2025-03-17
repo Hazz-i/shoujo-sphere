@@ -31,12 +31,12 @@ const HomePage = () => {
 	}, [ongoingHome, topAnimeList, batchHome]);
 
 	return (
-		<div className='w-full flex items-start justify-center gap-5'>
+		<div className='w-3/4 flex items-start justify-center gap-5'>
 			{/* ONGOING & BATCH SECTION */}
 			<span className='flex flex-col items-center gap-10'>
 				{/* ONGOING SECTION */}
-				<section className=''>
-					<span className='w-full flex justify-between items-center'>
+				<section className='w-[70rem]'>
+					<span className='flex justify-between items-center'>
 						<h2 className='text-2xl font-bold'>Ongoing</h2>
 						<a
 							className='font-semibold text-small pe-5 hover:cursor-pointer'
@@ -54,8 +54,8 @@ const HomePage = () => {
 				</section>
 
 				{/* BATCH SECTION */}
-				<section className='w-full'>
-					<span className='w-full flex justify-between items-center'>
+				<section className='w-[70rem]'>
+					<span className='flex justify-between items-center'>
 						<h2 className='text-2xl font-bold'>Batch</h2>
 						<a
 							className='font-semibold text-small pe-5 hover:cursor-pointer'
@@ -65,7 +65,7 @@ const HomePage = () => {
 						</a>
 					</span>
 
-					<div className='p-5 rounded-lg mt-5 grid grid-cols-8 gap-7 bg-gray-900'>
+					<div className='p-5 rounded-lg mt-5 grid grid-cols-5 gap-7 bg-gray-900'>
 						{batchAnimes?.slice(0, 12).map((anime, index) => (
 							<AnimeCardBatch anime={anime} key={index} />
 						))}
