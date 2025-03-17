@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  react:
+    build: .
+    ports:
+      - "5173:80"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=${VITE_API_BASE_URL} 
+    depends_on:
+      - flask
+    env_file:
+      - ./.env
+
+
+  flask:
+    build: ./server
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app
+    environment:
+      - FLASK_ENV=${FLASK_ENV}
+      - FLASK_APP=${FLASK_APP}
+      - FLASK_RUN_HOST=${FLASK_RUN_HOST}
+      - FLASK_RUN_PORT=${FLASK_RUN_PORT}
+      - FLASK_CORS_ORIGINS=${FLASK_CORS_ORIGINS}
+    env_file:
+      - ./server/.env

@@ -20,15 +20,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-CORS = CORS(app, origins=os.getenv('CORS_ORIGINS').split(','))
+CORS = CORS(app, origins=os.getenv('FLASK_CORS_ORIGINS'))
 
-# Inisialisasi Flask-Limiter
-limiter = Limiter(
-    get_remote_address,
-    app=app,
-    default_limits=["10 per second"], 
-)
-
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({'success': "success", 'message': "hayooo mo cari apa"})
 
 @app.route('/api/shoujo-sphere/home', methods=['GET'])
 def home():
