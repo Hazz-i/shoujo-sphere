@@ -47,8 +47,10 @@ const Header = () => {
 
 	return (
 		<header
-			className={`flex items-center justify-between px-5 lg:px-44 lg:py-4 border-b-2 border-gray-800 fixed w-full z-50 ${
-				isScrolled ? 'backdrop-blur-sm' : 'bg-gray-900'
+			className={`fixed top-0 left-0 right-0 flex items-center justify-between px-5 lg:px-20 py-4 border-b-2 border-gray-800 z-50 transition-all duration-500 ease-in-out ${
+				isScrolled
+					? 'lg:w-[80%] mx-auto rounded-xl backdrop-blur-md bg-[rgba(0,0,0,0.5)] shadow-lg'
+					: 'w-full bg-gray-900'
 			}`}
 		>
 			<h1 className='font-bold text-3xl'>Shoujo Sphere</h1>
@@ -87,7 +89,6 @@ const Header = () => {
 							</Button>
 						</form>
 					</li>
-
 				</ul>
 			</nav>
 		</header>
